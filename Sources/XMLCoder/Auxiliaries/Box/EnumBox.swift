@@ -35,6 +35,22 @@ enum IntOrString {
     case int(Int)
     case string(String)
 }
+    
+extension IntOrString: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case int
+        case string
+    }
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        do {
+            self = .int(try container.decode(Int.self, forKey: .int))
+        } catch {
+            self = .string(try container.decode(String.self, forKey: .string))
+        }
+    }
+
+}
 
 extension XMLEncoderImplementation {
     func box(_ intOrString: IntOrString) -> IntOrStringBox {
