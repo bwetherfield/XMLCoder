@@ -63,9 +63,16 @@ extension XMLEncoderImplementation {
 
 extension XMLDecoderImplementation {
     
-    func unbox<T: Decodable>(_ box: EnumBox) throws -> T {
+    func unbox(_ box: IntOrStringBox) throws -> IntOrString {
         do {
-            return try unbox(box.unboxed) as T
+            switch box {
+            case .int:
+                let value = try unbox(box.unboxed) as Int
+                return IntOrString.int(value)
+            case .string:
+                let value = try unbox(box.unboxed) as String
+                return IntOrString.string(value)
+            }
         } catch {
             throw error
         }
