@@ -19,3 +19,14 @@ extension EnumBox {
         return unboxed.xmlString()
     }
 }
+
+enum IntOrString: EnumBox {
+    var unboxed: Box {
+        switch self {
+        case let .int(intBox): return intBox
+        case let .string(stringBox): return stringBox
+        }
+    }
+    case int(IntBox)
+    case string(StringBox)
+}
