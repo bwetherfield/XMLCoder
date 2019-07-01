@@ -37,7 +37,7 @@ enum IntOrString {
 }
 
 extension XMLEncoderImplementation {
-    func box (_ intOrString: IntOrString) -> EnumBox {
+    func box (_ intOrString: IntOrString) -> IntOrStringBox {
         switch intOrString {
         case let .int(value): return IntOrStringBox.int(IntBox(value))
         case let .string(value): return IntOrStringBox.string(StringBox(value))
