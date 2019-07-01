@@ -294,6 +294,10 @@ extension XMLCoderElement {
         self.init(key: key)
         value = box.xmlString()
     }
+    
+    init(key: String, box: EnumBox) {
+        self.init(key: key, box: box.unboxed)
+    }
 
     init(key: String, box: Box) {
         switch box {
