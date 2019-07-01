@@ -44,3 +44,14 @@ extension XMLEncoderImplementation {
         }
     }
 }
+
+extension XMLDecoderImplementation {
+    
+    func unbox<T: Decodable>(_ box: EnumBox) throws -> T {
+        do {
+            return try unbox(box.unboxed) as T
+        } catch {
+            throw error
+        }
+    }
+}
