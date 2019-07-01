@@ -20,7 +20,7 @@ extension EnumBox {
     }
 }
 
-enum IntOrString: EnumBox {
+enum IntOrStringBox: EnumBox {
     var unboxed: Box {
         switch self {
         case let .int(intBox): return intBox
