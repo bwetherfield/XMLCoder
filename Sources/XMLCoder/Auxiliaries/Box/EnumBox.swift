@@ -7,17 +7,15 @@
 
 protocol EnumBox: Box {
     
-    var name: CodingKey { get }
-    
-    static func unboxed (as name: CodingKey) -> Box
+    var unboxed: Box { get }
 }
 
 extension EnumBox {
     var isNull: Bool {
-        return Self.unboxed(as: name).isNull
+        return unboxed.isNull
     }
     
     func xmlString() -> String? {
-        return Self.unboxed(as: name).xmlString()
+        return unboxed.xmlString()
     }
 }
