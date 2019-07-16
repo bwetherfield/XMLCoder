@@ -105,7 +105,7 @@ struct XMLCoderElement: Equatable {
     ) -> String {
         var string = ""
         string += element._toXMLString(
-            indented: level + 1, withCDATA: cdata, formatting: formatting
+            indented: level, withCDATA: cdata, formatting: formatting
         )
         string += prettyPrinted ? "\n" : ""
         return string
