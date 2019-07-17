@@ -246,6 +246,12 @@ struct XMLCoderElement: Equatable {
 
 extension XMLCoderElement {
     init(key: String, box: UnkeyedBox) {
+        if let first = box.first {
+            if first is SingleElementBox {
+                self.init(key: key, elements: box.map { XMLCoderElement(key: "", box: $0) })
+                return
+            }
+        }
         self.init(key: key, elements: box.map {
             XMLCoderElement(key: key, box: $0)
         })
