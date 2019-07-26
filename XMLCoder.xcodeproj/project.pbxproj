@@ -1356,27 +1356,27 @@
       };
       "OBJ_41" = {
          isa = "PBXFileReference";
-         path = "XMLDecoder.swift";
+         path = "XMLChoiceDecodingContainer.swift";
          sourceTree = "<group>";
       };
       "OBJ_42" = {
          isa = "PBXFileReference";
-         path = "XMLDecoderImplementation.swift";
+         path = "XMLDecoder.swift";
          sourceTree = "<group>";
       };
       "OBJ_43" = {
          isa = "PBXFileReference";
-         path = "XMLDecodingStorage.swift";
+         path = "XMLDecoderImplementation.swift";
          sourceTree = "<group>";
       };
       "OBJ_44" = {
          isa = "PBXFileReference";
-         path = "XMLKeyedDecodingContainer.swift";
+         path = "XMLDecodingStorage.swift";
          sourceTree = "<group>";
       };
       "OBJ_45" = {
          isa = "PBXFileReference";
-         path = "XMLSingleElementDecodingContainer.swift";
+         path = "XMLKeyedDecodingContainer.swift";
          sourceTree = "<group>";
       };
       "OBJ_46" = {
