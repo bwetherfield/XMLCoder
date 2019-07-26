@@ -105,22 +105,8 @@ struct XMLKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProtocol {
     }
 
     public func decodeNil(forKey key: Key) throws -> Bool {
-<<<<<<< HEAD
         let elements = container.withShared { keyedBox in
             keyedBox.elements[key.stringValue]
-=======
-        //        FIXME: DRY out
-        let elements = container.withShared { keyedBox -> [Box] in
-            return keyedBox.elements[key.stringValue].map {
-                if let choice = $0 as? ChoiceBox {
-                    return choice.element
-                } else if let singleElement = $0 as? SingleKeyedBox {
-                    return singleElement.element
-                } else {
-                    return $0
-                }
-            }
->>>>>>> 935d794... Rename SingleElementBox to SingleKeyedBox
         }
 
         let attributes = container.withShared { keyedBox in
@@ -282,38 +268,14 @@ extension XMLKeyedDecodingContainer {
                     let keyString = key.stringValue.isEmpty ? "value" : key.stringValue
                     let value = keyedBox.elements[keyString]
                     if !value.isEmpty {
-<<<<<<< HEAD
                         return value
-=======
-                        return value.map {
-                            if let choice = $0 as? ChoiceBox {
-                                return choice.element
-                            } else if let singleElement = $0 as? SingleKeyedBox {
-                                return singleElement.element
-                            } else {
-                                return $0
-                            }
-                        }
->>>>>>> 935d794... Rename SingleElementBox to SingleKeyedBox
                     } else if let value = keyedBox.value {
                         return [value]
                     } else {
                         return []
                     }
                 } else {
-<<<<<<< HEAD
                     return keyedBox.elements[key.stringValue]
-=======
-                    return keyedBox.elements[key.stringValue].map {
-                        if let choice = $0 as? ChoiceBox {
-                            return choice.element
-                        } else if let singleElement = $0 as? SingleKeyedBox {
-                            return singleElement.element
-                        } else {
-                            return $0
-                        }
-                    }
->>>>>>> 935d794... Rename SingleElementBox to SingleKeyedBox
                 }
             }
 
