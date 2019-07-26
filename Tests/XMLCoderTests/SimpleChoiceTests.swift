@@ -40,7 +40,6 @@ extension IntOrString: Codable {
 }
 
 class SimpleChoiceTests: XCTestCase {
-
     func testIntOrStringIntDecoding() throws {
         let xml = "<int>42</int>"
         let result = try XMLDecoder().decode(IntOrString.self, from: xml.data(using: .utf8)!)
