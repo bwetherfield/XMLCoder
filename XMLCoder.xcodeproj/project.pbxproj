@@ -221,8 +221,8 @@
       "OBJ_129" = {
          isa = "PBXGroup";
          children = (
-            "XMLCoder::XMLCoderTests::Product",
-            "XMLCoder::XMLCoder::Product"
+            "XMLCoder::XMLCoder::Product",
+            "XMLCoder::XMLCoderTests::Product"
          );
          name = "Products";
          path = "";
@@ -988,7 +988,7 @@
       };
       "OBJ_23" = {
          isa = "PBXFileReference";
-         path = "SingleElementBox.swift";
+         path = "SingleKeyedBox.swift";
          sourceTree = "<group>";
       };
       "OBJ_230" = {
