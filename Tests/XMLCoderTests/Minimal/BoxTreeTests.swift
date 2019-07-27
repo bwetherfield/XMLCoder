@@ -30,11 +30,10 @@ class BoxTreeTests: XCTestCase {
         )
 
         guard let boxTree = root.transformToBoxTree() as? KeyedBox else {
-            XCTFail("boxtTree is not a KeyedBox");
+            XCTFail("boxtTree is not a KeyedBox")
             return
         }
         let foo = boxTree.elements["foo"]
         XCTAssertEqual(foo.count, 2)
-
     }
 }

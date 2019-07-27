@@ -12,7 +12,6 @@ struct ChoiceBox {
 }
 
 extension ChoiceBox: Box {
-
     var isNull: Bool {
         return false
     }
@@ -22,7 +21,7 @@ extension ChoiceBox: Box {
     }
 }
 
-extension ChoiceBox: SimpleBox { }
+extension ChoiceBox: SimpleBox {}
 
 extension ChoiceBox {
     init?(_ keyedBox: KeyedBox) {

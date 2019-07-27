@@ -148,20 +148,20 @@ struct XMLKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProtocol {
             return nestedKeyedContainer(keyedBy: NestedKey.self, forKey: key)
         }
     }
-    
+
     mutating func nestedKeyedContainer<NestedKey>(
         keyedBy _: NestedKey.Type,
         forKey key: Key
     ) -> KeyedEncodingContainer<NestedKey> {
         let sharedKeyed = SharedBox(KeyedBox())
-        
+
         self.container.withShared { container in
             container.elements.append(sharedKeyed, at: _converted(key).stringValue)
         }
-        
+
         codingPath.append(key)
         defer { self.codingPath.removeLast() }
-        
+
         let container = XMLKeyedEncodingContainer<NestedKey>(
             referencing: encoder,
             codingPath: codingPath,
@@ -169,20 +169,20 @@ struct XMLKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProtocol {
         )
         return KeyedEncodingContainer(container)
     }
-    
+
     mutating func nestedChoiceContainer<NestedKey>(
         keyedBy _: NestedKey.Type,
         forKey key: Key
-        ) -> KeyedEncodingContainer<NestedKey> {
+    ) -> KeyedEncodingContainer<NestedKey> {
         let sharedChoice = SharedBox(ChoiceBox())
-        
+
         self.container.withShared { container in
             container.elements.append(sharedChoice, at: _converted(key).stringValue)
         }
-        
+
         codingPath.append(key)
         defer { self.codingPath.removeLast() }
-        
+
         let container = XMLChoiceEncodingContainer<NestedKey>(
             referencing: encoder,
             codingPath: codingPath,

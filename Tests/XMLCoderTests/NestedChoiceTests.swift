@@ -32,7 +32,7 @@ private struct Properties: Codable, Equatable {
     let title: String
 }
 
-private struct Break: Codable, Equatable { }
+private struct Break: Codable, Equatable {}
 
 extension Container: Codable {
     enum CodingKeys: String, CodingKey {
@@ -43,7 +43,7 @@ extension Container: Codable {
 extension Paragraph: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.entries = try container.decode([Entry].self)
+        entries = try container.decode([Entry].self)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -56,6 +56,7 @@ extension Entry: Codable {
     private enum CodingKeys: String, XMLChoiceCodingKey {
         case run, properties, br
     }
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         do {
@@ -83,7 +84,6 @@ extension Entry: Codable {
 }
 
 class NestedChoiceTests: XCTestCase {
-
     func testBreakDecoding() throws {
         let xml = "<br></br>"
         let result = try XMLDecoder().decode(Break.self, from: xml.data(using: .utf8)!)
@@ -93,11 +93,11 @@ class NestedChoiceTests: XCTestCase {
 
     func testPropertiesDecoding() throws {
         let xml = """
-         <properties>
-             <id>431</id>
-             <title>A Word About Wake Times</title>
-         </properties>
-         """
+        <properties>
+            <id>431</id>
+            <title>A Word About Wake Times</title>
+        </properties>
+        """
         let result = try XMLDecoder().decode(Properties.self, from: xml.data(using: .utf8)!)
         let expected = Properties(id: 431, title: "A Word About Wake Times")
         XCTAssertEqual(result, expected)
@@ -105,13 +105,13 @@ class NestedChoiceTests: XCTestCase {
 
     func testPropertiesAsEntryDecoding() throws {
         let xml = """
-         <entry>
-             <properties>
-                 <id>431</id>
-                 <title>A Word About Wake Times</title>
-             </properties>
-         </entry>
-         """
+        <entry>
+            <properties>
+                <id>431</id>
+                <title>A Word About Wake Times</title>
+            </properties>
+        </entry>
+        """
         let result = try XMLDecoder().decode(Entry.self, from: xml.data(using: .utf8)!)
         let expected: Entry = .properties(Properties(id: 431, title: "A Word About Wake Times"))
         XCTAssertEqual(result, expected)
@@ -119,11 +119,11 @@ class NestedChoiceTests: XCTestCase {
 
     func testRunDecoding() throws {
         let xml = """
-         <run>
-             <id>1518</id>
-             <text>I am answering it again.</text>
-         </run>
-         """
+        <run>
+            <id>1518</id>
+            <text>I am answering it again.</text>
+        </run>
+        """
         let result = try XMLDecoder().decode(Run.self, from: xml.data(using: .utf8)!)
         let expected = Run(id: 1518, text: "I am answering it again.")
         XCTAssertEqual(result, expected)
@@ -131,13 +131,13 @@ class NestedChoiceTests: XCTestCase {
 
     func testRunAsEntryDecoding() throws {
         let xml = """
-         <entry>
-             <run>
-                 <id>1518</id>
-                 <text>I am answering it again.</text>
-             </run>
-         </entry>
-         """
+        <entry>
+            <run>
+                <id>1518</id>
+                <text>I am answering it again.</text>
+            </run>
+        </entry>
+        """
         let result = try XMLDecoder().decode(Entry.self, from: xml.data(using: .utf8)!)
         let expected = Entry.run(Run(id: 1518, text: "I am answering it again."))
         XCTAssertEqual(result, expected)
@@ -145,43 +145,43 @@ class NestedChoiceTests: XCTestCase {
 
     func testEntriesDecoding() throws {
         let xml = """
-         <entries>
-             <run>
-                 <id>1518</id>
-                 <text>I am answering it again.</text>
-             </run>
-             <properties>
-                 <id>431</id>
-                 <title>A Word About Wake Times</title>
-             </properties>
-         </entries>
-         """
+        <entries>
+            <run>
+                <id>1518</id>
+                <text>I am answering it again.</text>
+            </run>
+            <properties>
+                <id>431</id>
+                <title>A Word About Wake Times</title>
+            </properties>
+        </entries>
+        """
         let result = try XMLDecoder().decode([Entry].self, from: xml.data(using: .utf8)!)
         let expected: [Entry] = [
             .run(Run(id: 1518, text: "I am answering it again.")),
-            .properties(Properties(id: 431, title: "A Word About Wake Times"))
+            .properties(Properties(id: 431, title: "A Word About Wake Times")),
         ]
         XCTAssertEqual(result, expected)
     }
 
     func testParagraphDecoding() throws {
         let xml = """
-         <p>
-             <run>
-                 <id>1518</id>
-                 <text>I am answering it again.</text>
-             </run>
-             <properties>
-                 <id>431</id>
-                 <title>A Word About Wake Times</title>
-             </properties>
-         </p>
-         """
+        <p>
+            <run>
+                <id>1518</id>
+                <text>I am answering it again.</text>
+            </run>
+            <properties>
+                <id>431</id>
+                <title>A Word About Wake Times</title>
+            </properties>
+        </p>
+        """
         let result = try XMLDecoder().decode(Paragraph.self, from: xml.data(using: .utf8)!)
         let expected = Paragraph(
             entries: [
                 .run(Run(id: 1518, text: "I am answering it again.")),
-                .properties(Properties(id: 431, title: "A Word About Wake Times"))
+                .properties(Properties(id: 431, title: "A Word About Wake Times")),
             ]
         )
         XCTAssertEqual(result, expected)
@@ -189,25 +189,25 @@ class NestedChoiceTests: XCTestCase {
 
     func testNestedEnums() throws {
         let xml = """
-         <container>
-             <p>
-                 <run>
-                     <id>1518</id>
-                     <text>I am answering it again.</text>
-                 </run>
-                 <properties>
-                     <id>431</id>
-                     <title>A Word About Wake Times</title>
-                 </properties>
-             </p>
-             <p>
-                 <run>
-                     <id>1519</id>
-                     <text>I am answering it again.</text>
-                 </run>
-             </p>
-         </container>
-         """
+        <container>
+            <p>
+                <run>
+                    <id>1518</id>
+                    <text>I am answering it again.</text>
+                </run>
+                <properties>
+                    <id>431</id>
+                    <title>A Word About Wake Times</title>
+                </properties>
+            </p>
+            <p>
+                <run>
+                    <id>1519</id>
+                    <text>I am answering it again.</text>
+                </run>
+            </p>
+        </container>
+        """
         let result = try XMLDecoder().decode(Container.self, from: xml.data(using: .utf8)!)
         let expected = Container(
             paragraphs: [
@@ -221,7 +221,7 @@ class NestedChoiceTests: XCTestCase {
                     entries: [
                         .run(Run(id: 1519, text: "I am answering it again.")),
                     ]
-                )
+                ),
             ]
         )
         XCTAssertEqual(result, expected)
@@ -240,7 +240,7 @@ class NestedChoiceTests: XCTestCase {
                     entries: [
                         .run(Run(id: 1519, text: "I am answering it again.")),
                     ]
-                )
+                ),
             ]
         )
         let encoded = try XMLEncoder().encode(original, withRootKey: "container")

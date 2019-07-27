@@ -62,7 +62,7 @@ class XMLEncoderImplementation: Encoder {
     }
 
     // MARK: - Encoder Methods
-    
+
     public func container<Key>(keyedBy _: Key.Type) -> KeyedEncodingContainer<Key> {
         if Key.self is XMLChoiceCodingKey.Type {
             return choiceContainer(keyedBy: Key.self)
@@ -70,7 +70,7 @@ class XMLEncoderImplementation: Encoder {
             return keyedContainer(keyedBy: Key.self)
         }
     }
-    
+
     public func keyedContainer<Key>(keyedBy _: Key.Type) -> KeyedEncodingContainer<Key> {
         // If an existing keyed container was already requested, return that one.
         let topContainer: SharedBox<KeyedBox>
@@ -88,7 +88,7 @@ class XMLEncoderImplementation: Encoder {
         let container = XMLKeyedEncodingContainer<Key>(referencing: self, codingPath: codingPath, wrapping: topContainer)
         return KeyedEncodingContainer(container)
     }
-    
+
     public func choiceContainer<Key>(keyedBy _: Key.Type) -> KeyedEncodingContainer<Key> {
         let topContainer: SharedBox<ChoiceBox>
         if canEncodeNewValue {
@@ -98,10 +98,10 @@ class XMLEncoderImplementation: Encoder {
             guard let container = storage.lastContainer as? SharedBox<ChoiceBox> else {
                 preconditionFailure("Attempt to push new (single element) keyed encoding container when already previously encoded at this path.")
             }
-            
+
             topContainer = container
         }
-        
+
         let container = XMLChoiceEncodingContainer<Key>(referencing: self, codingPath: codingPath, wrapping: topContainer)
         return KeyedEncodingContainer(container)
     }

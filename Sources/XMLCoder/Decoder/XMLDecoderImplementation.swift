@@ -178,7 +178,7 @@ class XMLDecoderImplementation: Decoder {
                     keyed.withShared { $0.elements.map { key, box in
                         SingleKeyedBox(key: key, element: box)
                     }
-                }
+                    }
                 )
             )
         default:
@@ -413,7 +413,6 @@ extension XMLDecoderImplementation {
     }
 
     func unbox<T: Decodable>(_ box: Box) throws -> T {
-
         let decoded: T?
         let type = T.self
 

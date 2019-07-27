@@ -24,7 +24,7 @@ class XMLReferencingEncoder: XMLEncoderImplementation {
 
         /// Referencing a specific key in a keyed container.
         case keyed(SharedBox<KeyedBox>, String)
-        
+
         /// Referencing a specific key in a keyed container.
         case choice(SharedBox<ChoiceBox>, String)
     }
@@ -73,13 +73,13 @@ class XMLReferencingEncoder: XMLEncoderImplementation {
 
         codingPath.append(key)
     }
-    
+
     init(
         referencing encoder: XMLEncoderImplementation,
         key: CodingKey,
         convertedKey: CodingKey,
         wrapping sharedKeyed: SharedBox<ChoiceBox>
-        ) {
+    ) {
         self.encoder = encoder
         reference = .choice(sharedKeyed, convertedKey.stringValue)
         super.init(
@@ -87,7 +87,7 @@ class XMLReferencingEncoder: XMLEncoderImplementation {
             nodeEncodings: encoder.nodeEncodings,
             codingPath: encoder.codingPath
         )
-        
+
         codingPath.append(key)
     }
 
