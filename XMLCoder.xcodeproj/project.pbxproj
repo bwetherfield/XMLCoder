@@ -27,6 +27,7 @@
 		D11E094623491BCE00C24DCB /* DoubleBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E094523491BCE00C24DCB /* DoubleBox.swift */; };
 		D11E094A234924C500C24DCB /* ValueBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E0949234924C500C24DCB /* ValueBox.swift */; };
 		D18FBFB82348FAE500FA4F65 /* QuoteDecodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FBFB72348FAE500FA4F65 /* QuoteDecodingTest.swift */; };
+		07E441BA2340F14B00890F46 /* EmptyElementEmptyStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E441B92340F14B00890F46 /* EmptyElementEmptyStringTests.swift */; };
 		OBJ_148 /* BoolBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* BoolBox.swift */; };
 		OBJ_149 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Box.swift */; };
 		OBJ_150 /* ChoiceBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* ChoiceBox.swift */; };
@@ -164,6 +165,7 @@
 		D11E094523491BCE00C24DCB /* DoubleBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleBox.swift; sourceTree = "<group>"; };
 		D11E0949234924C500C24DCB /* ValueBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueBox.swift; sourceTree = "<group>"; };
 		D18FBFB72348FAE500FA4F65 /* QuoteDecodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDecodingTest.swift; sourceTree = "<group>"; };
+		07E441B92340F14B00890F46 /* EmptyElementEmptyStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyElementEmptyStringTests.swift; sourceTree = "<group>"; };
 		OBJ_100 /* DecimalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalTests.swift; sourceTree = "<group>"; };
 		OBJ_101 /* EmptyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTests.swift; sourceTree = "<group>"; };
 		OBJ_102 /* FloatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatTests.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 				OBJ_121 /* PlantTest.swift */,
 				D18FBFB72348FAE500FA4F65 /* QuoteDecodingTest.swift */,
 				OBJ_124 /* RelationshipsTest.swift */,
+				07E441B92340F14B00890F46 /* EmptyElementEmptyStringTests.swift */,
 				OBJ_122 /* RJISample.swift */,
 				OBJ_123 /* RJITest.swift */,
 				B5F74471233F74E400BBDB15 /* RootLevelAttributeTest.swift */,
@@ -738,6 +741,7 @@
 				OBJ_251 /* KeyedTests.swift in Sources */,
 				OBJ_252 /* NullTests.swift in Sources */,
 				OBJ_253 /* OptionalTests.swift in Sources */,
+				07E441BA2340F14B00890F46 /* EmptyElementEmptyStringTests.swift in Sources */,
 				OBJ_254 /* StringTests.swift in Sources */,
 				B5EA3BB6230F237800D8D69B /* NestedChoiceArrayTest.swift in Sources */,
 				OBJ_255 /* UIntTests.swift in Sources */,
