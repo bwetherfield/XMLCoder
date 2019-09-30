@@ -447,10 +447,7 @@ extension XMLDecoderImplementation {
                 storage.popContainer()
             }
 
-            print("type: \(type), box: \(box)")
-
             do {
-                print("try decoding in init")
                 decoded = try type.init(from: self)
             } catch {
                 guard case DecodingError.valueNotFound = error,
