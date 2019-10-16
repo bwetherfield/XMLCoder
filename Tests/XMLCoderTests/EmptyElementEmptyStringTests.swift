@@ -68,25 +68,4 @@ class EmptyElementEmptyStringTests: XCTestCase {
         let result = try XMLDecoder().decode(ContainerSingle.self, from: xml.data(using: .utf8)!)
         XCTAssertEqual(expected, result)
     }
-
-    func testNestedArrayOfEmptyElementEmptyStringDecoding() throws {
-        let xml = """
-        <container>
-            <things>
-                <thing></thing>
-                <thing attribute="x"></thing>
-                <thing></thing>
-            </things>
-        </container>
-        """
-        let expected = ContainerMultiple(
-            things: [
-                Thing(attribute: nil, value: ""),
-                Thing(attribute: "x", value: ""),
-                Thing(attribute: nil, value: ""),
-            ]
-        )
-        let result = try XMLDecoder().decode(ContainerMultiple.self, from: xml.data(using: .utf8)!)
-        XCTAssertEqual(expected, result)
-    }
 }

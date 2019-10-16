@@ -105,6 +105,10 @@ struct XMLUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         var value: T?
         if let singleKeyed = box as? SingleKeyedBox {
             do {
+<<<<<<< HEAD
+=======
+                // Drill down to the element in the case of an nested unkeyed element
+>>>>>>> Clean up
                 value = try decode(decoder, singleKeyed)
             } catch {
                 do {
