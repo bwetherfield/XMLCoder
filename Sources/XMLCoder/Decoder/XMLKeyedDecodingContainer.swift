@@ -237,14 +237,14 @@ extension XMLKeyedDecodingContainer {
 
         let elements = container.withShared { keyedBox -> [KeyedBox.Element] in
             // Handle the coding key value intrinsic case
-            if ["value", ""].contains(key.stringValue) {
+            if [""].contains(key.stringValue) {
                 // For each boxed-up element we have, peer in to see if it is a `SingleKeyedBox`.
                 // A `SingleKeyedBox` bundles an `element` along with its `key` in order to defer
                 // its evaluation. This is used here in order to prevent the wiping away of
                 // `NullBox` elements prematurely which may be an empty `String` value in disguise.
                 // If we have a `SingledKeyedBox` here, extract its element. Otherwise, return the
                 // boxed-up element as-is.
-                return keyedBox.elements["value"].map { ($0 as? SingleKeyedBox)?.element ?? $0 }
+                return keyedBox.elements[""].map { ($0 as? SingleKeyedBox)?.element ?? $0 }
             }
             return keyedBox.elements[key.stringValue]
         }
@@ -275,7 +275,7 @@ extension XMLKeyedDecodingContainer {
         // If we are looking at a coding key value intrinsic where the expected type is `String` and
         // the value is empty, return `""`.
         if strategy(key) != .attribute, elements.isEmpty, attributes.isEmpty, type == String.self,
-            key.stringValue == "value" || key.stringValue == "" {
+            key.stringValue == "" {
             return "" as! T
         }
 
