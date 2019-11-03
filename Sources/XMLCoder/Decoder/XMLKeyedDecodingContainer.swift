@@ -262,22 +262,9 @@ extension XMLKeyedDecodingContainer {
             )
         }
 
-        let elements = container
-            .withShared { keyedBox -> [KeyedBox.Element] in
-                if ["value", ""].contains(key.stringValue) {
-                    let keyString = key.stringValue.isEmpty ? "value" : key.stringValue
-                    let value = keyedBox.elements[keyString]
-                    if !value.isEmpty {
-                        return value
-                    } else if let value = keyedBox.value {
-                        return [value]
-                    } else {
-                        return []
-                    }
-                } else {
-                    return keyedBox.elements[key.stringValue]
-                }
-            }
+        let elements = container.withShared { keyedBox in
+            keyedBox.elements[key.stringValue]
+        }
 
         let attributes = container.withShared { keyedBox in
             keyedBox.attributes[key.stringValue]
